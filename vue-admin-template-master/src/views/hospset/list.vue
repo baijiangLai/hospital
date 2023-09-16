@@ -13,7 +13,7 @@
 
       <!-- 工具条 -->
       <div>
-         <el-button type="danger" size="mini" @click="removeRows()">批量删除</el-button>
+         <el-button type="danger" size="default" @click="removeRows()">批量删除</el-button>
       </div>
 
       <el-table
@@ -48,13 +48,17 @@
 
       </el-table>
       <!-- 分页 -->
+
       <el-pagination
-      :current-page="current"
-      :page-size="limit"
-      :total="total"
-      style="padding: 30px 0; text-align: center;"
-      layout="total, prev, pager, next, jumper"
-      @current-change="getList"/>
+        @size-change="handleSizeChange"
+        @current-change="getList"
+        :current-page="current"
+        :page-sizes="[1, 2, 3, 4]"
+        :page-size="limit"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        style="padding: 30px 0; text-align: center;">
+      </el-pagination>
 
    </div>
 </template>
@@ -67,7 +71,7 @@ export default {
    data() {
       return {
          current:1, //当前页
-         limit:3, //每页显示记录数
+         limit:2, //每页显示记录数
          searchObj:{}, //条件封装对象
          list:[], //每页数据集合
          total:0, //总记录数
@@ -78,46 +82,7 @@ export default {
       //一般调用methods定义的方法，得到数据
       this.getList()
    },
-   methods: {//定义方法，进行请求接口调用
-      // //锁定和取消锁定
-      // lockHostSet(id,status) {
-      //    hospset.lockHospSet(id,status)
-      //       .then(response => {
-      //          //刷新
-      //          this.getList()
-      //       })
-      // },
-      // //获取选择复选框的id值
-      // handleSelectionChange(selection) {
-      //    this.multipleSelection = selection
-      // },
-      // //批量删除
-      // removeRows() {
-      //    this.$confirm('此操作将永久删除医院是设置信息, 是否继续?', '提示', {
-      //       confirmButtonText: '确定',
-      //       cancelButtonText: '取消',
-      //       type: 'warning'
-      //    }).then(() => { //确定执行then方法
-      //       var idList = []
-      //       //遍历数组得到每个id值，设置到idList里面
-      //       for(var i=0;i<this.multipleSelection.length;i++) {
-      //          var obj = this.multipleSelection[i]
-      //          var id = obj.id
-      //          idList.push(id)
-      //       }
-      //       //调用接口
-      //       hospset.batchRemoveHospSet(idList)
-      //          .then(response => {
-      //             //提示
-      //             this.$message({
-      //                type: 'success',
-      //                message: '删除成功!'
-      //             })
-      //             //刷新页面
-      //             this.getList(1)
-      //          })
-      //    })
-      // },
+   methods: {
       //医院设置列表
       getList(page=1) { //添加当前页参数
          this.current = page
@@ -132,6 +97,7 @@ export default {
                console.log(error)
             })
       },
+
       //删除医院设置的方法
       removeDataById(id) {
          this.$confirm('此操作将永久删除医院是设置信息, 是否继续?', '提示', {
@@ -151,7 +117,12 @@ export default {
                   this.getList(1)
                })
          })
-      }
+      },
+
+     handleSizeChange(newLimit) {
+       this.limit = newLimit;
+       this.getList();
+     }
    }
 }
 </script>
