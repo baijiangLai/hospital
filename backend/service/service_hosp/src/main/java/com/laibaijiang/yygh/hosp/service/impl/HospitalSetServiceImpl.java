@@ -72,5 +72,20 @@ public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, Hospi
         return baseMapper.deleteBatchIds(idList) >= 1;
     }
 
+    @Override
+    public boolean lockHospitalSet(Long id, Integer status) {
+        HospitalSet hospitalSet = baseMapper.selectById(id);
+        //设置状态
+        hospitalSet.setStatus(status);
+        return baseMapper.updateById(hospitalSet) == 1;
+    }
+
+    @Override
+    public void sendKey(Long id) {
+        HospitalSet hospitalSet = baseMapper.selectById(id);
+        String signKey = hospitalSet.getSignKey();
+        String hoscode = hospitalSet.getHoscode();
+    }
+
 
 }

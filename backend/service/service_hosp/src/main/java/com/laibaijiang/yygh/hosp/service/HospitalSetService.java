@@ -21,4 +21,8 @@ public interface HospitalSetService extends IService<HospitalSet> {
     boolean updateHospitalSet(HospitalSet hospitalSet);
 
     boolean batchRemoveHospitalSet(List<Long> idList);
+
+    boolean lockHospitalSet(Long id, Integer status);
+
+    void sendKey(Long id);
 }

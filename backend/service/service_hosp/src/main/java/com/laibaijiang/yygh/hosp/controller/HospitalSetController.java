@@ -76,4 +76,22 @@ public class HospitalSetController {
         return batchRemove? Result.ok() : Result.fail();
     }
 
+    //8 医院设置锁定和解锁
+    @PutMapping("lockHospitalSet/{id}/{status}")
+    public Result lockHospitalSet(@PathVariable Long id,
+                                  @PathVariable Integer status) {
+
+        boolean update = hospitalSetService.lockHospitalSet(id, status);
+        return update? Result.ok() : Result.fail();
+
+    }
+
+    //9 发送签名秘钥
+    @PutMapping("sendKey/{id}")
+    public Result lockHospitalSet(@PathVariable Long id) {
+        hospitalSetService.sendKey(id);
+        //TODO 发送短信
+        return Result.ok();
+    }
+
 }
