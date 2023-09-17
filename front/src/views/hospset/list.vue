@@ -83,6 +83,10 @@ export default {
       this.getList()
    },
    methods: {
+     // 当表格复选框选项发生变化的时候触发
+     handleSelectionChange(selection) {
+       this.multipleSelection = selection
+     },
       //医院设置列表
       getList(page=1) { //添加当前页参数
          this.current = page
@@ -114,10 +118,47 @@ export default {
                      message: '删除成功!'
                   })
                   //刷新页面
-                  this.getList(1)
+                  this.getList(this.current)
                })
          })
       },
+
+     //批量删除
+     removeRows() {
+       this.$confirm('此操作将永久删除医院是设置信息, 是否继续?', '提示', {
+         confirmButtonText: '确定',
+         cancelButtonText: '取消',
+         type: 'warning'
+       }).then(() => { //确定执行then方法
+         var idList = []
+         //遍历数组得到每个id值，设置到idList里面
+         for(var i=0;i<this.multipleSelection.length;i++) {
+           var obj = this.multipleSelection[i]
+           var id = obj.id
+           idList.push(id)
+         }
+         //调用接口
+         hospset.batchRemoveHospSet(idList)
+           .then(response => {
+             //提示
+             this.$message({
+               type: 'success',
+               message: '删除成功!'
+             })
+             //刷新页面
+             this.getList(1)
+           })
+       })
+     },
+
+     //锁定和取消锁定
+     lockHostSet(id,status) {
+       hospset.lockHospSet(id,status)
+         .then(response => {
+           //刷新
+           this.getList()
+         })
+     },
 
      handleSizeChange(newLimit) {
        this.limit = newLimit;
