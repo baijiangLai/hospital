@@ -78,6 +78,7 @@ export default {
         }
     },
     created() {
+        // 查询全部数据
         this.getDictList(1)
     },
     methods: {
@@ -104,6 +105,7 @@ export default {
                     this.list = response.data
                 })
         },
+        // 层级显示
         getChildrens(tree, treeNode, resolve) {
             dict.dictList(tree.id).then(response => {
                 resolve(response.data)

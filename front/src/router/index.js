@@ -81,7 +81,7 @@ export const constantRouterMap = [
         component: () => import('@/views/hosp/schedule'),
         meta: { title: '排班', noCache: true },
         hidden: true
-      }        
+      }
     ]
   },
   {
@@ -89,7 +89,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/cmn/list',
     name: '数据管理',
-    alwaysShow: true,
+    alwaysShow: true, //由于只有一个，所以不加的话，只显示children
     meta: { title: '数据管理', icon: 'example' },
     children: [
       {
@@ -126,7 +126,7 @@ export const constantRouterMap = [
         name: '认证审批列表',
               component: () =>import('@/views/user/userInfo/authList'),
         meta: { title: '认证审批列表', icon: 'table' }
-      }      
+      }
     ]
   },
   {
@@ -144,7 +144,7 @@ export const constantRouterMap = [
           meta: { title: '预约统计' }
         }
       ]
-  },  
+  },
   {
     path: '/example',
     component: Layout,
