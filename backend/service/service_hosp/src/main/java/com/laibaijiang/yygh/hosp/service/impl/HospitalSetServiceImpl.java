@@ -87,5 +87,12 @@ public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, Hospi
         String hoscode = hospitalSet.getHoscode();
     }
 
+    @Override
+    public String getSignKey(String hoscode) {
+        QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
+        wrapper.eq("hoscode", hoscode);
+        return baseMapper.selectOne(wrapper).getSignKey();
+    }
+
 
 }
