@@ -18,6 +18,7 @@
         <module>common</module>
         <module>model</module>
         <module>service</module>
+        <module>service-client</module>
     </modules>
 
     <properties>

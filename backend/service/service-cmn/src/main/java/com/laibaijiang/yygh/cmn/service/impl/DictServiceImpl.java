@@ -1,6 +1,7 @@
 package com.laibaijiang.yygh.cmn.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,7 +10,6 @@ import com.laibaijiang.yygh.cmn.mapper.DictMapper;
 import com.laibaijiang.yygh.cmn.service.DictService;
 import com.lbj.yygh.model.cmn.Dict;
 import com.lbj.yygh.vo.cmn.DictEeVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         List<Dict> dictList = baseMapper.selectList(wrapper);
         for (Dict dict : dictList) {
             Long dictId = dict.getId();
-            boolean child = hashChild(dictId);
+            boolean child = hasChild(dictId);
             dict.setHasChildren(child);
         }
         return dictList;
@@ -68,8 +68,40 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         }
     }
 
+    @Override
+    public String getDictName(String dictCode, String value) {
+        //如果value能唯一定位数据字典，dictCode可以传空，例如：省市区的value值能够唯一确定
+        if(StrUtil.isEmpty(dictCode)) {
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("value", value));
+            if(null != dict) {
+                return dict.getName();
+            }
+        } else {
+            Dict parentDict = getByDictCode(dictCode);
+            if(null == parentDict) return "";
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("parent_id", parentDict.getId()).eq("value", value));
+            if(null != dict) {
+                return dict.getName();
+            }
+        }
+        return "";
+    }
+
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        Dict dict = getByDictCode(dictCode);
+        Long dictId = dict.getId();
+        return findChildData(dictId);
+    }
+
+    private Dict getByDictCode(String dictCode) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code", dictCode);
+        return baseMapper.selectOne(wrapper);
+    }
+
     // 判断id下是否还有子数据
-    private boolean hashChild(Long dictId) {
+    private boolean hasChild(Long dictId) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("parent_id",dictId);
         return baseMapper.selectCount(wrapper) > 0;

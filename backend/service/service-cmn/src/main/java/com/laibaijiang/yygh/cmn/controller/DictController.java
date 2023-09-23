@@ -5,6 +5,7 @@ import com.laibaijiang.yygh.commong.result.Result;
 import com.lbj.yygh.model.cmn.Dict;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,5 +39,26 @@ public class DictController {
     public Result importData(MultipartFile file){
         dictService.importData(file);
         return Result.ok();
+    }
+
+    @ApiOperation(value = "获取数据字典中dictCode和value查询名称")
+    @GetMapping("/getName/{dictCode}/{value}")
+    public String getName(@PathVariable String dictCode,
+                          @PathVariable String value) {
+        return dictService.getDictName(dictCode, value);
+    }
+
+    @ApiOperation(value = "获取数据字典中value查询名称")
+    @GetMapping("/getName/{value}")
+    public String getName(@PathVariable String value) {
+        return dictService.getDictName("", value);
+    }
+
+    @ApiOperation(value = "根据dictCode获取下级节点")
+    @GetMapping(value = "/findByDictCode/{dictCode}")
+    public Result<List<Dict>> findByDictCode(
+            @PathVariable String dictCode) {
+        List<Dict> list = dictService.findByDictCode(dictCode);
+        return Result.ok(list);
     }
 }
