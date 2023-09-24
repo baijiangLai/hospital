@@ -2,8 +2,10 @@ package com.laibaijiang.yygh.hosp.service;
 
 import com.lbj.yygh.model.hosp.Department;
 import com.lbj.yygh.vo.hosp.DepartmentQueryVo;
+import com.lbj.yygh.vo.hosp.DepartmentVo;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Map;
 
 public interface DepartmentService {
@@ -16,4 +18,7 @@ public interface DepartmentService {
     //删除科室接口
     void remove(String hoscode, String depcode);
 
+    List<DepartmentVo> findDeptTree(String hoscode);
+
+    Object getDepName(String hoscode, String depcode);
 }
