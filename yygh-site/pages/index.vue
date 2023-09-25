@@ -31,15 +31,9 @@
             <div class="filter-wrapper">
         <span
             class="label">等级：</span>
-              <div class="condition-wrapper"><span
-                  class="item v-link highlight clickable selected">
-                                                    全部 </span><span
-                  class="item v-link clickable">
-                                                    三级医院 </span><span
-                  class="item v-link clickable">
-                                                    二级医院 </span><span
-                  class="item v-link clickable">
-                                                    一级医院 </span></div>
+              <div class="condition-wrapper">
+                <span v-for="(item, idx) in hostypeList" :key="idx" class="item v-link clickable"> {{item.name}} </span>
+              </div>
             </div>
             <div class="filter-wrapper">
       <span
@@ -239,6 +233,58 @@
   </div>
 </template>
 <script>
+import hosp from "~/api/hosp";
+import dictApi from "@/api/dict";
 export default {
+  // asyncData：渲染组件之前异步获取数据
+  asyncData({ params, error }) {
+    return hosp.getPageList(1, 10, null).then(response => {
+      console.log(response.data);
+      return {
+        list: response.data.content,
+        pages : response.data.totalPages
+      }
+    });
+  },
+
+  data() {
+    return {
+      searchObj: {},
+      page: 1,
+      limit: 10,
+
+      hosname: '',
+      hostypeList: [],
+      districtList: [],
+
+      hostypeActiveIndex: 0,
+      provinceActiveIndex: 0
+    }
+  },
+  created() {
+    this.init()
+  },
+
+  mounted() {
+  },
+
+  methods: {
+    init() {
+      dictApi.findByDictCode('Hostype').then(response => {
+        this.hostypeList = []
+        this.hostypeList.push({"name":"全部", "value":""})
+        for(let i in response.data){
+          this.hostypeList.push(response.data[i]);
+        }
+      })
+      dictApi.findByDictCode('Beijing').then(response => {
+        this.districtList = []
+        this.districtList.push({"name":"全部", "value":""})
+        for(let i in response.data){
+          this.districtList.push(response.data[i]);
+        }
+      })
+    },
+  }
 }
 </script>
