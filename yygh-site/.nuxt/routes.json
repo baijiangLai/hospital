@@ -4,5 +4,23 @@
     "path": "/",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/index.vue",
     "chunkName": "pages/index"
+  },
+  {
+    "name": "hosp-detail-hoscode",
+    "path": "/hosp/detail/:hoscode?",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/hosp/detail/_hoscode.vue",
+    "chunkName": "pages/hosp/detail/_hoscode"
+  },
+  {
+    "name": "hosp-notice-hoscode",
+    "path": "/hosp/notice/:hoscode?",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/hosp/notice/_hoscode.vue",
+    "chunkName": "pages/hosp/notice/_hoscode"
+  },
+  {
+    "name": "hosp-hoscode",
+    "path": "/hosp/:hoscode?",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/hosp/_hoscode.vue",
+    "chunkName": "pages/hosp/_hoscode"
   }
 ]

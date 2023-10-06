@@ -11,7 +11,21 @@ export default {
 
     getByHosname(hosname) {
         return request({
-            url: `${api_name}/findByHosname/${hosname}`,
+            url: `${api_name}/findByHosName/${hosname}`,
+            method: 'get'
+        })
+    },
+
+    show(hoscode) {
+        return request({
+            url: `${api_name}/findHospDetail/${hoscode}`,
+            method: 'get'
+        })
+    },
+
+    findDepartment(hoscode) {
+        return request({
+            url: `${api_name}/department/${hoscode}`,
             method: 'get'
         })
     },
