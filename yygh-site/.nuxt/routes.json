@@ -1,5 +1,11 @@
 [
   {
+    "name": "weixin-callback",
+    "path": "/weixin/callback",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/weixin/callback.vue",
+    "chunkName": "pages/weixin/callback"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/index.vue",
