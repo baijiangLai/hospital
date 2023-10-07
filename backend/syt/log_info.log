@@ -100,3 +100,11 @@
 ]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@207f7d43
 2023-10-07 21:18:39.036 [PollingServerListUpdater-0] INFO  com.netflix.config.ChainedDynamicProperty - Flipping property: service-cmn.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
 2023-10-07 21:21:59.803 [http-nio-8201-exec-4] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:3, serverValue:5}] to localhost:27017
+2023-10-07 23:27:40.945 [http-nio-8201-exec-3] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:4, serverValue:6}] to localhost:27017
+2023-10-07 23:39:48.080 [Thread-14] INFO  com.netflix.loadbalancer.PollingServerListUpdater - Shutting down the Executor Pool for PollingServerListUpdater
+2023-10-07 23:39:48.127 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registering from Nacos Server now...
+2023-10-07 23:39:48.139 [SpringContextShutdownHook] INFO  c.a.cloud.nacos.registry.NacosServiceRegistry - De-registration finished.
+2023-10-07 23:39:48.140 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-10-07 23:39:48.212 [SpringContextShutdownHook] INFO  org.mongodb.driver.connection - Closed connection [connectionId{localValue:3, serverValue:5}] to localhost:27017 because the pool has been closed.
+2023-10-07 23:39:48.214 [SpringContextShutdownHook] INFO  org.mongodb.driver.connection - Closed connection [connectionId{localValue:2, serverValue:4}] to localhost:27017 because the pool has been closed.
+2023-10-07 23:39:48.215 [SpringContextShutdownHook] INFO  org.mongodb.driver.connection - Closed connection [connectionId{localValue:4, serverValue:6}] to localhost:27017 because the pool has been closed.
