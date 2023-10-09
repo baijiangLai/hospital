@@ -7,22 +7,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConstantPropertiesUtils implements InitializingBean {
 
-//    @Value("${uni.sms.regionId}")
-//    private String regionId;
+    @Value("${aliyun.sms.regionId}")
+    private String regionId;
 
-    @Value("${uni.sms.accessKeyId}")
+    @Value("${aliyun.sms.accessKeyId}")
     private String accessKeyId;
 
-    @Value("${uni.sms.secret}")
+    @Value("${aliyun.sms.secret}")
     private String secret;
 
-//    public static String REGION_Id;
+    public static String REGION_Id;
     public static String ACCESS_KEY_ID;
     public static String SECRECT;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-//        REGION_Id=regionId;
+        REGION_Id=regionId;
         ACCESS_KEY_ID=accessKeyId;
         SECRECT=secret;
     }

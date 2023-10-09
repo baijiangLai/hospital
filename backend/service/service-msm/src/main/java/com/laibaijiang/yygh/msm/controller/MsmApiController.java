@@ -40,7 +40,7 @@ public class MsmApiController {
         boolean isSend = msmService.send(phone,code);
         //生成验证码放到redis里面，设置有效时间
         if(isSend) {
-            redisTemplate.opsForValue().set(phone,code,2, TimeUnit.MINUTES);
+//            redisTemplate.opsForValue().set(phone,code,2, TimeUnit.MINUTES);
             return Result.ok();
         } else {
             return Result.fail().message("发送短信失败");

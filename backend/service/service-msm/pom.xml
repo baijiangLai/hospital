@@ -18,16 +18,16 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.aliyun</groupId>-->
-<!--            <artifactId>aliyun-java-sdk-core</artifactId>-->
-<!--        </dependency>-->
-
         <dependency>
-            <groupId>com.apistd.uni</groupId>
-            <artifactId>uni-sdk</artifactId>
-            <version>0.0.4</version>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.apistd.uni</groupId>-->
+<!--            <artifactId>uni-sdk</artifactId>-->
+<!--            <version>0.0.4</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 
