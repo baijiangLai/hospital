@@ -4,6 +4,7 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _3878e02e = () => interopDefault(import('../pages/user/index.vue' /* webpackChunkName: "pages/user/index" */))
 const _35a55ce2 = () => interopDefault(import('../pages/weixin/callback.vue' /* webpackChunkName: "pages/weixin/callback" */))
 const _0788ce62 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 const _75d569ad = () => interopDefault(import('../pages/hosp/detail/_hoscode.vue' /* webpackChunkName: "pages/hosp/detail/_hoscode" */))
@@ -22,6 +23,10 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/user",
+    component: _3878e02e,
+    name: "user"
+  }, {
     path: "/weixin/callback",
     component: _35a55ce2,
     name: "weixin-callback"

@@ -1,32 +1,44 @@
 [
   {
+    "name": "user",
+    "path": "/user",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/user/index.vue",
+    "chunkName": "pages/user/index",
+    "_name": "_3878e02e"
+  },
+  {
     "name": "weixin-callback",
     "path": "/weixin/callback",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/weixin/callback.vue",
-    "chunkName": "pages/weixin/callback"
+    "chunkName": "pages/weixin/callback",
+    "_name": "_35a55ce2"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_0788ce62"
   },
   {
     "name": "hosp-detail-hoscode",
     "path": "/hosp/detail/:hoscode?",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/hosp/detail/_hoscode.vue",
-    "chunkName": "pages/hosp/detail/_hoscode"
+    "chunkName": "pages/hosp/detail/_hoscode",
+    "_name": "_75d569ad"
   },
   {
     "name": "hosp-notice-hoscode",
     "path": "/hosp/notice/:hoscode?",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/hosp/notice/_hoscode.vue",
-    "chunkName": "pages/hosp/notice/_hoscode"
+    "chunkName": "pages/hosp/notice/_hoscode",
+    "_name": "_1eec02f4"
   },
   {
     "name": "hosp-hoscode",
     "path": "/hosp/:hoscode?",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/hosp/_hoscode.vue",
-    "chunkName": "pages/hosp/_hoscode"
+    "chunkName": "pages/hosp/_hoscode",
+    "_name": "_489b79d6"
   }
 ]
