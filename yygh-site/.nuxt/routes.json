@@ -1,10 +1,31 @@
 [
   {
+    "name": "patient",
+    "path": "/patient",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/patient/index.vue",
+    "chunkName": "pages/patient/index",
+    "_name": "_4c16c3d8"
+  },
+  {
     "name": "user",
     "path": "/user",
     "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/user/index.vue",
     "chunkName": "pages/user/index",
     "_name": "_3878e02e"
+  },
+  {
+    "name": "patient-add",
+    "path": "/patient/add",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/patient/add.vue",
+    "chunkName": "pages/patient/add",
+    "_name": "_1af817a7"
+  },
+  {
+    "name": "patient-show",
+    "path": "/patient/show",
+    "component": "/Users/laibaijiang/IdeaProjects/hospital/yygh-site/pages/patient/show.vue",
+    "chunkName": "pages/patient/show",
+    "_name": "_7c223fe7"
   },
   {
     "name": "weixin-callback",

@@ -167,7 +167,6 @@ export default {
     // 微信登录回调处理
     let self = this;
     window["loginCallback"] = (name,token, openid) => {
-      debugger
       self.loginCallback(name, token, openid);
     }
 
