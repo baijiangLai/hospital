@@ -1,4 +1,4 @@
-package com.laibaijiang.yygh.user.controller;
+package com.laibaijiang.yygh.user.api;
 
 import com.laibaijiang.yygh.commong.result.Result;
 import com.laibaijiang.yygh.commong.utils.AuthContextHolder;
