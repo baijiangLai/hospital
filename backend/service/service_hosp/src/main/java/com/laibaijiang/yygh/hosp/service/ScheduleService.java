@@ -2,6 +2,7 @@ package com.laibaijiang.yygh.hosp.service;
 
 
 import com.lbj.yygh.model.hosp.Schedule;
+import com.lbj.yygh.vo.hosp.ScheduleOrderVo;
 import com.lbj.yygh.vo.hosp.ScheduleQueryVo;
 import org.springframework.data.domain.Page;
 
@@ -23,4 +24,11 @@ public interface ScheduleService {
     List<Schedule> getDetailSchedule(String hoscode, String depcode, String workDate);
 
     Map<String, Object> getBookingScheduleRule(Integer page, Integer limit, String hoscode, String depcode);
+
+    Schedule getScheduleId(String scheduleId);
+
+    ScheduleOrderVo getScheduleOrderVo(String scheduleId);
+
+    //根据排班数据
+    void update(Schedule schedule);
 }

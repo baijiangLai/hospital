@@ -5,10 +5,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.laibaijiang.yygh.common.utils.MD5;
+import com.laibaijiang.yygh.commong.exception.YyghException;
+import com.laibaijiang.yygh.commong.result.ResultCodeEnum;
 import com.laibaijiang.yygh.hosp.mapper.HospitalSetMapper;
 import com.laibaijiang.yygh.hosp.service.HospitalSetService;
 import com.lbj.yygh.model.hosp.HospitalSet;
 import com.lbj.yygh.vo.hosp.HospitalSetQueryVo;
+import com.lbj.yygh.vo.order.SignInfoVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -93,6 +96,22 @@ public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, Hospi
         wrapper.eq("hoscode", hoscode);
         return baseMapper.selectOne(wrapper).getSignKey();
     }
+
+    //获取医院签名信息
+    @Override
+    public SignInfoVo getSignInfoVo(String hoscode) {
+        QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
+        wrapper.eq("hoscode",hoscode);
+        HospitalSet hospitalSet = baseMapper.selectOne(wrapper);
+        if(null == hospitalSet) {
+            throw new YyghException(ResultCodeEnum.HOSPITAL_OPEN);
+        }
+        SignInfoVo signInfoVo = new SignInfoVo();
+        signInfoVo.setApiUrl(hospitalSet.getApiUrl());
+        signInfoVo.setSignKey(hospitalSet.getSignKey());
+        return signInfoVo;
+    }
+
 
 
 }

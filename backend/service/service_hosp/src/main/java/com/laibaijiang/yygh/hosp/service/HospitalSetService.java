@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lbj.yygh.model.hosp.HospitalSet;
 import com.lbj.yygh.vo.hosp.HospitalSetQueryVo;
+import com.lbj.yygh.vo.order.SignInfoVo;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface HospitalSetService extends IService<HospitalSet> {
     void sendKey(Long id);
 
     String getSignKey(String hoscode);
+
+    SignInfoVo getSignInfoVo(String hoscode);
 }
