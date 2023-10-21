@@ -13,4 +13,13 @@ public interface PaymentService extends IService<PaymentInfo> {
     void savePaymentInfo(OrderInfo order, Integer status);
 
     void paySuccess(String outTradeNo, Map<String, String> resultMap);
+
+    /**
+     * 获取支付记录
+     * @param orderId
+     * @param paymentType
+     * @return
+     */
+    PaymentInfo getPaymentInfo(Long orderId, Integer paymentType);
+
 }

@@ -58,7 +58,7 @@ public class OrderApiController {
         return Result.ok(OrderStatusEnum.getStatusList());
     }
 
-    //取消预约
+    @ApiOperation(value = "取消预约")
     @GetMapping("auth/cancelOrder/{orderId}")
     public Result cancelOrder(@PathVariable Long orderId) {
         Boolean isOrder = orderService.cancelOrder(orderId);
