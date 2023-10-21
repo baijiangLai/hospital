@@ -11,4 +11,6 @@ public interface PaymentService extends IService<PaymentInfo> {
 
 
     void savePaymentInfo(OrderInfo order, Integer status);
+
+    void paySuccess(String outTradeNo, Map<String, String> resultMap);
 }
