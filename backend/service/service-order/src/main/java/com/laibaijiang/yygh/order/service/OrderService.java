@@ -20,4 +20,8 @@ public interface OrderService extends IService<OrderInfo> {
     IPage<OrderInfo> selectPage(Page<OrderInfo> pageParam, OrderQueryVo orderQueryVo);
 
     Boolean cancelOrder(Long orderId);
+
+    // 患者就诊通知
+    void patientTips();
+
 }
