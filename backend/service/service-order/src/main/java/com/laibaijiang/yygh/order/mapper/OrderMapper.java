@@ -3,6 +3,8 @@ package com.laibaijiang.yygh.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lbj.yygh.model.order.OrderInfo;
+import com.lbj.yygh.vo.order.OrderCountQueryVo;
+import com.lbj.yygh.vo.order.OrderCountVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

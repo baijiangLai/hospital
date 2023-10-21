@@ -27,7 +27,7 @@ public class WeixinServiceImpl implements WeixinService {
     private PaymentService paymentService;
 
     @Autowired
-    private RedisTemplate redisTemplate; //支付两个小时有效，使用redis进行缓存
+    private RedisTemplate<String, Map<Object, Object>> redisTemplate; //支付两个小时有效，使用redis进行缓存
 
 
     //生成微信支付二维码
@@ -35,7 +35,7 @@ public class WeixinServiceImpl implements WeixinService {
     public Map createNative(Long orderId) {
         try {
             //从redis获取数据
-            Map payMap = (Map)redisTemplate.opsForValue().get(orderId.toString());
+            Map<Object, Object> payMap = redisTemplate.opsForValue().get(orderId.toString());
             if(payMap != null) {
                 return payMap;
             }
@@ -44,7 +44,7 @@ public class WeixinServiceImpl implements WeixinService {
             OrderInfo order = orderService.getById(orderId);
             //2 向支付记录表添加信息
             paymentService.savePaymentInfo(order, PaymentTypeEnum.WEIXIN.getStatus());
-            //3设置参数，
+            //3设置参数，调用微信接口
             //把参数转换xml格式，使用商户key进行加密
             Map paramMap = new HashMap();
             paramMap.put("appid", ConstantPropertiesUtils.APPID);
@@ -77,7 +77,7 @@ public class WeixinServiceImpl implements WeixinService {
             map.put("resultCode", resultMap.get("result_code"));
             map.put("codeUrl", resultMap.get("code_url")); //二维码地址
 
-            //支付二维码放入redis，有效期两个小时
+            //设置支付的二维码的有效时期为2 hours
             if(resultMap.get("result_code") != null) {
                 redisTemplate.opsForValue().set(orderId.toString(),map,120, TimeUnit.MINUTES);
             }
